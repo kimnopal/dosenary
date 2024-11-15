@@ -13,6 +13,10 @@ export default function Home() {
   const [search, setSearch] = useState<string>('')
   const [lecturers, setLecturers] = useState<any>([])
 
+  useEffect(() => {
+    setSearch('')
+  }, [lecturers])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -22,6 +26,7 @@ export default function Home() {
       const { data, error } = await supabase.from("lecturers").select(`
       *,
       educations (
+        id,
         detail,
         degrees (level)
       )
@@ -43,16 +48,16 @@ export default function Home() {
 
   return (
     <div className="w-full mt-20 flex flex-col items-center">
-      <div className="mb-10">
+      <div className="mb-10 w-full">
         <div className="mb-8 text-center">
-          <p className="text-2xl font-medium mb-2">Susah nyari informasi dosen?</p>
-          <h2 className="text-4xl font-bold">Cari dosenmu disini!</h2>
+          <p className="text-xl md:text-2xl font-medium mb-2">Susah nyari informasi dosen?</p>
+          <h2 className="text-3xl md:text-4xl font-bold">Cari dosenmu disini!</h2>
         </div>
         {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-search"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg> */}
 
-        <div>
-          <form action="" method="post" onSubmit={handleSubmit} className="flex items-center gap-2">
-            <Input type="text" placeholder="Tulis nama dosenmu" className="w-96" onChange={handleChange} value={search} />
+        <div className="">
+          <form action="" method="post" onSubmit={handleSubmit} className="flex justify-center items-center gap-2">
+            <Input type="text" placeholder="Tulis nama dosenmu" className="w-full max-w-96" onChange={handleChange} value={search} />
             <Button type="submit">Cari</Button>
           </form>
         </div>
@@ -63,24 +68,26 @@ export default function Home() {
           return (
             <AlertDialog key={lecturer.id}>
               <AlertDialogTrigger>
-                <Card className="w-full ">
-                  <CardHeader className="px-4 py-3 flex-row justify-between">
-                    <div className="flex flex-row gap-3 items-center">
-                      <CardTitle className="text-lg">{lecturer.name}</CardTitle>
-                      <CardDescription>{lecturer.nip}</CardDescription>
+                <Card className="w-full">
+                  <CardHeader className="px-4 py-3 flex-row justify-between items-center">
+                    <div className="flex flex-col gap-1">
+                      <CardTitle className="text-base md:text-lg text-left">{lecturer.name}</CardTitle>
+                      <CardDescription className="text-left md:text-base">NIP. {lecturer.nip}</CardDescription>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-chevron-right size-7 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                    {/* <div className=" flex "> */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-chevron-right min-w-7 w-7 !m-0 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                    {/* </div> */}
                   </CardHeader>
                 </Card>
               </AlertDialogTrigger>
-              <AlertDialogContent className="">
+              <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle className="text-2xl">
                     Detail Dosen
                   </AlertDialogTitle>
                   {/* <AlertDialogDescription className="text-base"> */}
                   <div id="radix-:r2:" className="text-muted-foreground text-base">
-                    <table className="border-separate border-spacing-y-1">
+                    <table className="border-separate border-spacing-y-1 text-left">
                       <tbody>
                         <tr>
                           <th className="align-top">Nama</th>
@@ -103,7 +110,7 @@ export default function Home() {
                           <td className="align-top">Teknik Elektro</td>
                         </tr>
                         <tr>
-                          <th className="pr-16 align-top">Riwayat Pendidikan</th>
+                          <th className="pr-4 md:pr-8 align-top">Riwayat Pendidikan</th>
                           <td className="w-4 align-top">:</td>
                           <td className="align-top">
                             <ul className="list-none pl-0 m-0">

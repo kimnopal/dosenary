@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from 'next/font/google'
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,9 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="w-full flex justify-center p-5 relative bottom-0">
-          Built with <span className="text-red-500 px-2">&hearts;</span> by naotheone
+          <div>
+            Built with <span className="text-red-500">&hearts;</span> by <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="text-blue-600 underline">@fall.hkm</Link>
+          </div>
         </footer>
       </body>
     </html>

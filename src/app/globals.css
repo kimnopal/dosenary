@@ -73,7 +73,7 @@ body {
   }
 }
 
-.underline {
+/* .underline {
   position: relative;
 }
 
@@ -103,4 +103,4 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
+} */
