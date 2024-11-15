@@ -65,14 +65,14 @@ export function Navbar() {
                     <a className="flex-none font-semibold text-xl text-black focus:outline-none focus:opacity-80 dark:text-white"
                         href="/" aria-label="Brand">Dosenary</a>
                     <div className="flex gap-2">
-                        <Button variant={'ghost'} className="rounded-full p-3 h-auto">
+                        {/* <Button variant={'ghost'} className="rounded-full p-3 h-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-sun !size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
-                        </Button>
-                        <AlertDialog key={'lecturer.id'}>
+                        </Button> */}
+                        <AlertDialog>
                             <AlertDialogTrigger>
-                                <Button variant={'ghost'} className="rounded-full p-3 h-auto">
+                                <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-full p-3 h-auto">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-info !size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
-                                </Button>
+                                </div>
                             </AlertDialogTrigger>
                             <AlertDialogContent>
                                 <AlertDialogHeader>
@@ -80,7 +80,7 @@ export function Navbar() {
                                         Informasi
                                     </AlertDialogTitle>
                                     <AlertDialogDescription className="text-base">
-                                        <p >Data yang tersedia masih dalam penyempurnaan. Oleh karena itu jika kamu ingin berkontribusi bisa menghubungi admin.</p>
+                                        Data yang tersedia masih dalam penyempurnaan. Oleh karena itu jika kamu ingin berkontribusi bisa menghubungi <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="text-blue-600">@falll.hkm.</Link>
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>

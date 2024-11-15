@@ -82,11 +82,11 @@ export default function Home() {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle className="text-2xl">
+                  <AlertDialogTitle>
                     Detail Dosen
                   </AlertDialogTitle>
                   {/* <AlertDialogDescription className="text-base"> */}
-                  <div id="radix-:r2:" className="text-muted-foreground text-base">
+                  <div id="radix-:r2:" className="text-muted-foreground text-sm md:text-base">
                     <table className="border-separate border-spacing-y-1 text-left">
                       <tbody>
                         <tr>

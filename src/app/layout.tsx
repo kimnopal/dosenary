@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,13 +28,19 @@ export default function RootLayout({
           background: 'radial-gradient(circle, rgba(233,240,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%)',
         }}
       >
+        {/* <Alert className="bg-secondary text-muted-foreground h-fit flex justify-center items-center rounded-none border-none">
+          <AlertDescription className="text-center">
+            Masih dalam tahap pengembangan, lihat selengkapnya disini.
+          </AlertDescription>
+        </Alert> */}
+
         <Navbar />
         <main className="container max-w-[925px]">
           {children}
         </main>
         <footer className="w-full flex justify-center p-5 relative bottom-0">
           <div>
-            Built with <span className="text-red-500">&hearts;</span> by <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="text-blue-600 underline">@fall.hkm</Link>
+            Built with <span className="text-red-500">&hearts;</span> by <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="text-blue-600">@falll.hkm</Link>
           </div>
         </footer>
       </body>
