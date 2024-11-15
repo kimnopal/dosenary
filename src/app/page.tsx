@@ -49,9 +49,9 @@ export default function Home() {
   return (
     <div className="w-full mt-20 flex flex-col items-center">
       <div className="mb-10 w-full">
-        <div className="mb-5 md:mb-8 text-center">
-          <p className="text-lg md:text-2xl font-medium mb-1 md:mb-2">Susah nyari informasi dosen?</p>
-          <h2 className="text-2xl md:text-4xl font-bold">Cari dosenmu disini!</h2>
+        <div className="mb-6 md:mb-8 text-center">
+          <p className="text-xl md:text-2xl font-medium mb-1 md:mb-2">Susah nyari informasi dosen?</p>
+          <h2 className="text-3xl md:text-4xl font-bold">Cari dosenmu disini!</h2>
         </div>
         {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-search"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg> */}
 
