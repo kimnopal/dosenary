@@ -84,13 +84,13 @@ export function Navbar() {
                                         <span className="block">
                                             Data yang tersedia masih dalam penyempurnaan. Oleh karena itu kalo kamu mau berkontribusi atau punya masukan dan saran, feel free to contact me. <br />
                                         </span>
-                                        <span className="flex items-center justify-center md:justify-start gap-2 text-blue-400">
+                                        <span className="flex items-center justify-center md:justify-start gap-1 text-blue-400 underline">
                                             <Mail className="size-5" />
                                             <Link href={'mailto:naufal.h@mhs.unsoed.ac.id'} target="_blank" className="font-semibold">naufal.h@mhs.unsoed.ac.id</Link><br />
                                         </span>
-                                        <span className="flex items-center justify-center md:justify-start gap-2 text-blue-400">
+                                        <span className="flex items-center justify-center md:justify-start gap-1 text-blue-400 underline">
                                             <Instagram className="size-5" />
-                                            <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="font-semibold">@falll.hkm.</Link>
+                                            <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="font-semibold">@falll.hkm</Link>
                                         </span>
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
