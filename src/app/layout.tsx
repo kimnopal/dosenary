@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google'
+import { Inter, Figtree } from 'next/font/google'
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 
 const inter = Inter({ subsets: ['latin'] })
+// const figtree = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +26,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased h-screen grid grid-rows-[max-content_1fr_max-content]`}
         style={{
           // bacrgb(216,208,231)kground: 'rgb(248,244,255)',
-          background: 'radial-gradient(circle, rgba(233,240,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%)',
+          background: 'radial-gradient(circle at center top, rgba(233,240,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,1) 100%)',
         }}
       >
         {/* <Alert className="bg-secondary text-muted-foreground h-fit flex justify-center items-center rounded-none border-none">
