@@ -8,6 +8,7 @@ import { Terminal } from "lucide-react";
 import Script from "next/script";
 import { GoogleAnalytics, sendGAEvent } from "@next/third-parties/google";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] })
 // const figtree = Figtree({ subsets: ['latin'] })
@@ -43,6 +44,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
       <GoogleAnalytics gaId="G-0ZYPQ2YP0H" />
     </html>

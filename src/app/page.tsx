@@ -115,7 +115,9 @@ export default function Home() {
             <Frown className="size-11 text-border" />
             <div className="text-center flex flex-col gap-4 max-w-md">
               <p className="text-foreground/30 text-lg md:text-xl">Maaf, data dosenmu belum ada.</p>
-              <p className="text-foreground/30 text-sm md:text-base">Kamu bisa berkontribusi dengan mengirimkan data yang valid ke email <Link href={'mailto:naufal.h@mhs.unsoed.ac.id'} target="_blank" className="underline">naufal.h@mhs.unsoed.ac.id</Link></p>
+              <p className="text-foreground/30 text-sm md:text-base">Kamu bisa berkontribusi dengan mengirimkan data yang valid ke email <Link href={'mailto:naufal.h@mhs.unsoed.ac.id'} target="_blank" className="underline"
+                onClick={() => sendGAEvent('event', 'emailClicked', { value: 'Email' })}
+              >naufal.h@mhs.unsoed.ac.id</Link></p>
             </div>
           </div>
         ) : lecturers?.map((lecturer: any) => {
