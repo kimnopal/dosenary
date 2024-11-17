@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { createClient } from "@/utils/supabase/client";
+import { sendGAEvent } from "@next/third-parties/google";
 import { Frown, SearchX, ServerOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +29,8 @@ export default function Home() {
     e.preventDefault()
 
     if (search.length >= 3) {
+      sendGAEvent('event', 'searchLecturer', { value: search })
+
       setLoading((prevState: boolean) => true)
       const supabase = createClient()
 
@@ -60,7 +63,7 @@ export default function Home() {
     setSearch(() => e.target.value)
   }
 
-  console.log('semoga dia notice :)');
+  console.log('info mabar add id : 98975941');
   console.log('jangan lupa follow ig : @falll.hkm');
 
   return (

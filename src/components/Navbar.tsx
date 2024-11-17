@@ -17,6 +17,7 @@ import { Button } from "./ui/button"
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog"
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Instagram, Mail } from "lucide-react"
+import { sendGAEvent } from "@next/third-parties/google"
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -70,7 +71,7 @@ export function Navbar() {
                             <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-sun !size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
                         </Button> */}
                         <AlertDialog>
-                            <AlertDialogTrigger>
+                            <AlertDialogTrigger onClick={() => sendGAEvent('event', 'infoClicked', { value: 'Melihat Info' })}>
                                 <div className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-full p-3 h-auto">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="lucide lucide-info !size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
                                 </div>
@@ -86,11 +87,15 @@ export function Navbar() {
                                         </span>
                                         <span className="flex items-center justify-center md:justify-start gap-1 text-blue-400 underline">
                                             <Mail className="size-5" />
-                                            <Link href={'mailto:naufal.h@mhs.unsoed.ac.id'} target="_blank" className="font-semibold">naufal.h@mhs.unsoed.ac.id</Link><br />
+                                            <Link href={'mailto:naufal.h@mhs.unsoed.ac.id'} target="_blank" className="font-semibold"
+                                                onClick={() => sendGAEvent('event', 'emailClicked', { value: 'Email' })}
+                                            >naufal.h@mhs.unsoed.ac.id</Link><br />
                                         </span>
                                         <span className="flex items-center justify-center md:justify-start gap-1 text-blue-400 underline">
                                             <Instagram className="size-5" />
-                                            <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="font-semibold">@falll.hkm</Link>
+                                            <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="font-semibold"
+                                                onClick={() => sendGAEvent('event', 'instagramClicked', { value: 'Instagram' })}
+                                            >@falll.hkm</Link>
                                         </span>
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
@@ -100,7 +105,7 @@ export function Navbar() {
                             </AlertDialogContent>
                         </AlertDialog>
                         <div className="absolute top-14 right-11 -scale-x-100 rotate- w-8">
-                            <svg viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clip-path="url(#clip0_2_40)"> <path d="M27.916 31.4568C20.0191 25.1909 13.7896 18.0721 10.031 8.49523M10.031 8.49523C12.5436 8.84916 15.2028 8.99688 17.7457 8.92371M10.031 8.49523C8.84116 12.6182 8.41809 15.8177 8.49744 20.0916" stroke="#09090B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path> </g> <defs> <clipPath id="clip0_2_40"> <rect width="24" height="32" fill="white" transform="matrix(0.428577 -0.903505 -0.903505 -0.428577 28.9122 36.3566)"></rect> </clipPath> </defs> </svg>
+                            <svg viewBox="0 0 40 37" fill="none" xmlns="http://www.w3.org/2000/svg"> <g clipPath="url(#clip0_2_40)"> <path d="M27.916 31.4568C20.0191 25.1909 13.7896 18.0721 10.031 8.49523M10.031 8.49523C12.5436 8.84916 15.2028 8.99688 17.7457 8.92371M10.031 8.49523C8.84116 12.6182 8.41809 15.8177 8.49744 20.0916" stroke="#09090B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path> </g> <defs> <clipPath id="clip0_2_40"> <rect width="24" height="32" fill="white" transform="matrix(0.428577 -0.903505 -0.903505 -0.428577 28.9122 36.3566)"></rect> </clipPath> </defs> </svg>
                         </div>
                         <span className="absolute top-[88px] right-16 rotate-12 text-sm md:text-base md:right-[64px]">info</span>
                     </div>

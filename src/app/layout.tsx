@@ -5,6 +5,9 @@ import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
+import Script from "next/script";
+import { GoogleAnalytics, sendGAEvent } from "@next/third-parties/google";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ['latin'] })
 // const figtree = Figtree({ subsets: ['latin'] })
@@ -39,12 +42,9 @@ export default function RootLayout({
         <main className="container max-w-[925px]">
           {children}
         </main>
-        <footer className="w-full flex justify-center p-5 relative bottom-0">
-          <div>
-            Built with <span className="text-red-500">&hearts;</span> by <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="text-blue-600">@falll.hkm</Link>
-          </div>
-        </footer>
+        <Footer />
       </body>
+      <GoogleAnalytics gaId="G-0ZYPQ2YP0H" />
     </html>
   );
 }
