@@ -92,7 +92,7 @@ export function Navbar() {
                                         </Card>
                                         <Separator />
                                         <div>
-                                            <h3 className="text-lg font-semibold mb-2">Terima Kasih Kepada Kontributor ✨</h3>
+                                            <h3 className="text-lg font-semibold mb-2">Terima Kasih Kepada Kontributor Hebat ✨</h3>
                                             <div className="flex flex-wrap gap-2">
                                                 {contributors.map((contributor, index) => (
                                                     <Link

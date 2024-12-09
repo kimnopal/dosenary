@@ -154,10 +154,10 @@ export default function Home() {
                   <div id="radix-:r2:" className="text-muted-foreground text-sm md:text-base">
                     <table className="border-separate border-spacing-y-1 text-left">
                       <tbody>
-                        <tr>
-                          <th className="">Nama</th>
-                          <td className="w-3 ">:</td>
-                          <td className="">
+                        <tr className="hidden sm:table-row">
+                          <th className="align-top">Nama</th>
+                          <td className="w-5 align-top">:</td>
+                          <td className="align-top">
                             <div className="flex gap-2 md:gap-1 items-center">
                               {lecturer.name}
                               <TooltipProvider>
@@ -184,11 +184,43 @@ export default function Home() {
                             </div>
                           </td>
                         </tr>
-                        <tr>
-                          <th className="">NIP</th>
-                          <td className="w-3 ">:</td>
+
+                        <tr className="sm:hidden flex flex-col">
+                          <th>Nama</th>
                           <td className="">
-                            <div className="flex gap-2 md:gap-1 items-center">
+                            <div className="flex w-full gap-2 md:gap-1 items-center">
+                              {lecturer.name}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-8"
+                                      onClick={() => copyToClipboard(lecturer.name, "Nama")}
+                                    >
+                                      {copied === "Nama" ? (
+                                        <Check className={`h-4 w-4 `} />
+                                      ) : (
+                                        <Copy className={`h-4 w-4 `} />
+                                      )}
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>{copied === "Nama" ? "Berhasil Menyalin" : "Salin Nama"}</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* ===== NIP ===== */}
+                        <tr className="hidden sm:table-row">
+                          <th className="align-top">NIP</th>
+                          <td className="w-5 align-top">:</td>
+                          <td className="align-top">
+                            <div className="flex flex-wrap gap-2 md:gap-1 items-center">
                               {lecturer.nip ? lecturer.nip : '-'}
                               <TooltipProvider>
                                 <Tooltip>
@@ -214,11 +246,43 @@ export default function Home() {
                             </div>
                           </td>
                         </tr>
-                        <tr>
+
+                        <tr className="sm:hidden flex flex-col">
+                          <th className="align-top">NIP</th>
+                          <td className="align-top">
+                            <div className="flex flex-wrap gap-2 md:gap-1 items-center">
+                              {lecturer.nip ? lecturer.nip : '-'}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-8"
+                                      onClick={() => copyToClipboard(lecturer.nip, "NIP")}
+                                    >
+                                      {copied === "NIP" ? (
+                                        <Check className={`h-4 w-4 `} />
+                                      ) : (
+                                        <Copy className={`h-4 w-4 `} />
+                                      )}
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>Salin NIP</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* ===== Email ===== */}
+                        <tr className="hidden sm:table-row">
                           <th className="">Email</th>
-                          <td className="w-3 ">:</td>
+                          <td className="w-5">:</td>
                           <td className="">
-                            <div className="flex gap-2 md:gap-1 items-center">
+                            <div className="flex flex-wrap gap-2 md:gap-1 items-center">
                               {lecturer.email ? lecturer.email : '-'}
                               <TooltipProvider>
                                 <Tooltip>
@@ -244,19 +308,63 @@ export default function Home() {
                             </div>
                           </td>
                         </tr>
-                        <tr>
+
+                        <tr className="sm:hidden flex flex-col">
+                          <th>Email</th>
+                          <td className="">
+                            <div className="flex flex-wrap gap-2 md:gap-1 items-center">
+                              {lecturer.email ? lecturer.email : '-'}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-8"
+                                      onClick={() => copyToClipboard(lecturer.email, "Email")}
+                                    >
+                                      {copied === "Email" ? (
+                                        <Check className={`h-4 w-4 `} />
+                                      ) : (
+                                        <Copy className={`h-4 w-4 `} />
+                                      )}
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>Salin Email</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* ===== Fakultas ===== */}
+                        <tr className="hidden sm:table-row">
                           <th className="">Fakultas</th>
-                          <td className="w-3 ">:</td>
+                          <td className="w-5 ">:</td>
                           <td className="">-</td>
                         </tr>
-                        <tr>
+                        <tr className="sm:hidden flex flex-col">
+                          <th>Fakultas</th>
+                          <td className="">-</td>
+                        </tr>
+
+                        {/* ===== Jurusan ===== */}
+                        <tr className="hidden sm:table-row">
                           <th className="">Jurusan</th>
-                          <td className="w-3 ">:</td>
+                          <td className="w-5 ">:</td>
                           <td className="">-</td>
                         </tr>
-                        <tr>
+                        <tr className="sm:hidden flex flex-col">
+                          <th>Jurusan</th>
+                          <td className="">-</td>
+                        </tr>
+
+                        {/* ===== Riwayat Pendidikan ===== */}
+                        <tr className="hidden sm:table-row">
                           <th className="pr-2 md:pr-8 ">Riwayat Pendidikan</th>
-                          <td className="w-3 ">:</td>
+                          <td className="w-5 ">:</td>
                           <td className="">
                             <ul className="list-none pl-0 m-0">
                               {lecturer.educations.length != 0 ? lecturer.educations.map((education: any) => {
@@ -266,6 +374,10 @@ export default function Home() {
                               }) : "-"}
                             </ul>
                           </td>
+                        </tr>
+                        <tr className="sm:hidden flex flex-col">
+                          <th>Riwayat Pendidikan</th>
+                          <td className="">-</td>
                         </tr>
                       </tbody>
                     </table>
