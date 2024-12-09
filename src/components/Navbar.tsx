@@ -15,47 +15,26 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Button } from "./ui/button"
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog"
-import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Instagram, Mail } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { Github, Instagram, Mail } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
+import { Separator } from "./ui/separator"
+import { Badge } from "./ui/badge"
 
-const components: { title: string; href: string; description: string }[] = [
-    {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-        title: "Hover Card",
-        href: "/docs/primitives/hover-card",
-        description:
-            "For sighted users to preview content available behind a link.",
-    },
-    {
-        title: "Progress",
-        href: "/docs/primitives/progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-        title: "Scroll-area",
-        href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
-    },
-    {
-        title: "Tabs",
-        href: "/docs/primitives/tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        href: "/docs/primitives/tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
+
+interface Contributor {
+    name: string
+    link: string
+}
+
+const contributors: Contributor[] = [
+    { name: "@rakhmiizyn", link: "https://www.instagram.com/rakhmiizyn/" },
+    { name: "@alfinawhy__", link: "https://www.instagram.com/alfinawhy__/" },
+    { name: "@afifahhnk_", link: "https://www.instagram.com/afifahhnk_/" },
+    { name: "@sahila.hm", link: "https://www.instagram.com/sahila.hm/" },
+    // Add more contributors as needed
 ]
+
 
 export function Navbar() {
     return (
@@ -83,20 +62,52 @@ export function Navbar() {
                                     </AlertDialogTitle>
                                     <AlertDialogDescription className="text-base space-y-2">
                                         <span className="block">
-                                            Data yang tersedia masih dalam penyempurnaan. Oleh karena itu kalo kamu mau berkontribusi atau punya masukan dan saran, feel free to contact me. <br />
+                                            Data yang tersedia masih dalam penyempurnaan. Oleh karena itu kalo kamu mau berkontribusi atau punya masukan dan saran, feel free to contact me. 👋<br />
                                         </span>
-                                        <span className="flex items-center justify-center md:justify-start gap-1 text-blue-400 underline">
-                                            <Mail className="size-5" />
-                                            <Link href={'mailto:naufal.h@mhs.unsoed.ac.id'} target="_blank" className="font-semibold"
-                                                onClick={() => sendGAEvent('event', 'emailClicked', { value: 'Email' })}
-                                            >naufal.h@mhs.unsoed.ac.id</Link><br />
-                                        </span>
-                                        <span className="flex items-center justify-center md:justify-start gap-1 text-blue-400 underline">
-                                            <Instagram className="size-5" />
-                                            <Link href={'https://www.instagram.com/falll.hkm/'} target="_blank" className="font-semibold"
-                                                onClick={() => sendGAEvent('event', 'instagramClicked', { value: 'Instagram' })}
-                                            >@falll.hkm</Link>
-                                        </span>
+                                        <Card>
+                                            <CardContent className="space-y-2 p-4">
+                                                <div className="flex items-center gap-2">
+                                                    <Mail className="h-5 w-5 text-blue-500" />
+                                                    <Link
+                                                        href="mailto:naufal.h@mhs.unsoed.ac.id"
+                                                        target="_blank"
+                                                        className="font-semibold text-blue-500 hover:underline"
+                                                        onClick={() => sendGAEvent('event', 'emailClicked', 'Email')}
+                                                    >
+                                                        naufal.h@mhs.unsoed.ac.id
+                                                    </Link>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Instagram className="h-5 w-5 text-pink-500" />
+                                                    <Link
+                                                        href="https://www.instagram.com/falll.hkm/"
+                                                        target="_blank"
+                                                        className="font-semibold text-pink-500 hover:underline"
+                                                        onClick={() => sendGAEvent('event', 'instagramClicked', 'Instagram')}
+                                                    >
+                                                        @falll.hkm
+                                                    </Link>
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                        <Separator />
+                                        <div>
+                                            <h3 className="text-lg font-semibold mb-2">Terima Kasih Kepada Kontributor ✨</h3>
+                                            <div className="flex flex-wrap gap-2">
+                                                {contributors.map((contributor, index) => (
+                                                    <Link
+                                                        key={index}
+                                                        href={contributor.link}
+                                                        target="_blank"
+                                                        onClick={() => sendGAEvent('event', 'contributorClicked', contributor.name)}
+                                                    >
+                                                        <Badge variant="secondary" className="cursor-pointer hover:bg-secondary-foreground hover:text-secondary transition-colors">
+                                                            {contributor.name}
+                                                        </Badge>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>

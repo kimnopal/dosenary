@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { createClient } from "@/utils/supabase/client";
 import { sendGAEvent } from "@next/third-parties/google";
-import { Frown, SearchX, ServerOff } from "lucide-react";
+import { Check, Copy, Frown, SearchX, ServerOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { ChangeEvent, useEffect, useState } from "react";
@@ -63,6 +64,14 @@ export default function Home() {
     setSearch(() => e.target.value)
   }
 
+  const [copied, setCopied] = useState<string | null>(null)
+
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text)
+    setCopied(type)
+    setTimeout(() => setCopied(null), 2000)
+  }
+
   console.log('info mabar add id : 98975941');
   console.log('jangan lupa follow ig : @falll.hkm');
 
@@ -70,7 +79,7 @@ export default function Home() {
     <div className="w-full mt-20 flex flex-col items-center">
       <div className="mb-10 w-full">
         <div className="mb-6 md:mb-8 text-center flex flex-col items-center">
-          <p className="text-xl md:text-2xl font-medium mb-1 md:mb-2">Susah nyari informasi dosen?</p>
+          <p className="text-xl md:text-2xl font-medium mb-1 md:mb-2">Susah nyari informasi dosen? 🔎</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-1 md:m-2">Cari dosenmu disini!</h2>
           {/* <svg xmlns="http://www.w3.org/2000/svg" className="max-w-60 w-auto md:w-72" viewBox="0 0 1729 149" fill="#09090B"><path d="M1689.89 26.59a4479.17 4479.17 0 0 0-89.64-7.41C1354.1.45 1106.56-5.76 859.92 5.93c-227.31-4.25-454.79 8.96-681.36 27.95C121.94 38.9 65.1 40.2 8.38 42.12c-16.57 2.86-5.23 26.39 5.6 14.46 160.76-1.27 331.82-27.38 620.54-34.8A4574.9 4574.9 0 0 0 498.9 36.57C376.43 52.24 253.01 65.21 132.88 94.51c-36.16 8.94-71.67 20.31-106.69 32.95-7.14 4.4-27.74 3.63-24.98 15.62 1.99 7.19 13.63 7.05 18.04 2.59 143.67-54.58 297.49-70.64 448.88-90.24 129.01-16.82 258.61-28.01 388.46-34.27 285.02 6.07 570.13 38.15 848.22 100.65 3.84 1.09 8.24-1.32 9.23-5.24 1.98-7.31-5.66-9.96-11.42-10.6-48.05-10.76-96.18-21.26-144.56-30.43-160.68-28.2-322.86-46.78-485.4-60.19l-2.34-.16c161.55-1.33 323.21 4.35 484.31 15.71 37.11 2.65 125.06 8.85 164.97 13.96a7.58 7.58 0 0 0 8.45-6.41c.94-13.18-23.48-8.77-38.14-11.86Z"></path></svg> */}
         </div>
@@ -146,35 +155,115 @@ export default function Home() {
                     <table className="border-separate border-spacing-y-1 text-left">
                       <tbody>
                         <tr>
-                          <th className="align-top">Nama</th>
-                          <td className="w-4 align-top">:</td>
-                          <td className="align-top">{lecturer.name}</td>
+                          <th className="">Nama</th>
+                          <td className="w-3 ">:</td>
+                          <td className="">
+                            <div className="flex gap-2 md:gap-1 items-center">
+                              {lecturer.name}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-8"
+                                      onClick={() => copyToClipboard(lecturer.name, "Nama")}
+                                    >
+                                      {copied === "Nama" ? (
+                                        <Check className={`h-4 w-4 `} />
+                                      ) : (
+                                        <Copy className={`h-4 w-4 `} />
+                                      )}
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>{copied === "Nama" ? "Berhasil Menyalin" : "Salin Nama"}</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </td>
                         </tr>
                         <tr>
-                          <th className="align-top">NIP</th>
-                          <td className="w-4 align-top">:</td>
-                          <td className="align-top">{lecturer.nip ? lecturer.nip : '-'}</td>
+                          <th className="">NIP</th>
+                          <td className="w-3 ">:</td>
+                          <td className="">
+                            <div className="flex gap-2 md:gap-1 items-center">
+                              {lecturer.nip ? lecturer.nip : '-'}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-8"
+                                      onClick={() => copyToClipboard(lecturer.nip, "NIP")}
+                                    >
+                                      {copied === "NIP" ? (
+                                        <Check className={`h-4 w-4 `} />
+                                      ) : (
+                                        <Copy className={`h-4 w-4 `} />
+                                      )}
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>Salin NIP</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </td>
                         </tr>
                         <tr>
-                          <th className="align-top">Fakultas</th>
-                          <td className="w-4 align-top">:</td>
-                          <td className="align-top">-</td>
+                          <th className="">Email</th>
+                          <td className="w-3 ">:</td>
+                          <td className="">
+                            <div className="flex gap-2 md:gap-1 items-center">
+                              {lecturer.email ? lecturer.email : '-'}
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="size-8"
+                                      onClick={() => copyToClipboard(lecturer.email, "Email")}
+                                    >
+                                      {copied === "Email" ? (
+                                        <Check className={`h-4 w-4 `} />
+                                      ) : (
+                                        <Copy className={`h-4 w-4 `} />
+                                      )}
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>Salin Email</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </td>
                         </tr>
                         <tr>
-                          <th className="align-top">Jurusan</th>
-                          <td className="w-4 align-top">:</td>
-                          <td className="align-top">-</td>
+                          <th className="">Fakultas</th>
+                          <td className="w-3 ">:</td>
+                          <td className="">-</td>
                         </tr>
                         <tr>
-                          <th className="pr-4 md:pr-8 align-top">Riwayat Pendidikan</th>
-                          <td className="w-4 align-top">:</td>
-                          <td className="align-top">
+                          <th className="">Jurusan</th>
+                          <td className="w-3 ">:</td>
+                          <td className="">-</td>
+                        </tr>
+                        <tr>
+                          <th className="pr-2 md:pr-8 ">Riwayat Pendidikan</th>
+                          <td className="w-3 ">:</td>
+                          <td className="">
                             <ul className="list-none pl-0 m-0">
-                              {lecturer.educations.map((education: any) => {
+                              {lecturer.educations.length != 0 ? lecturer.educations.map((education: any) => {
                                 return (
                                   <li key={education.id}>{education.degrees.level} {education.detail}</li>
                                 )
-                              })}
+                              }) : "-"}
                             </ul>
                           </td>
                         </tr>
