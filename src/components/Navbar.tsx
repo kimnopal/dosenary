@@ -16,7 +16,7 @@ import {
 import { Button } from "./ui/button"
 import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Github, Instagram, Mail } from "lucide-react"
+import { Coffee, Github, Instagram, Mail } from "lucide-react"
 import { sendGAEvent } from "@next/third-parties/google"
 import { Separator } from "./ui/separator"
 import { Badge } from "./ui/badge"
@@ -86,6 +86,17 @@ export function Navbar() {
                                                         onClick={() => sendGAEvent('event', 'instagramClicked', 'Instagram')}
                                                     >
                                                         @falll.hkm
+                                                    </Link>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Coffee className="h-5 w-5 text-amber-800" />
+                                                    <Link
+                                                        href="https://saweria.co/naotheone"
+                                                        target="_blank"
+                                                        className="font-semibold text-amber-800 hover:underline"
+                                                        onClick={() => sendGAEvent('event', 'instagramClicked', 'Instagram')}
+                                                    >
+                                                        Buy me a coffee
                                                     </Link>
                                                 </div>
                                             </CardContent>
